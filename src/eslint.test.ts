@@ -13,7 +13,7 @@ it("has vue config if enabled", async () => {
 
 it("has vue-pug config if enabled", async () => {
   expect((await defineEslintConfig()).find(c => c.name === "vue-pug")).toBeUndefined()
-  expect((await defineEslintConfig({ vue: true })).find(c => c.name === "vue-pug")).toBeUndefined()
+  expect((await defineEslintConfig({ vue: true })).find(c => c.rules?.["vue-pug/no-parsing-error"])).toBeUndefined()
   expect(() => defineEslintConfig({ vuePug: true })).toThrowError()
-  expect((await defineEslintConfig({ vue: true, vuePug: true })).find(c => c.name === "vue-pug")).toBeTruthy()
+  expect((await defineEslintConfig({ vue: true, vuePug: true })).find(c => c.rules?.["vue-pug/no-parsing-error"])).toBeTruthy()
 })

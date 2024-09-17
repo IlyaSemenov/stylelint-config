@@ -1,5 +1,5 @@
-import { antfu, interopDefault } from "@antfu/eslint-config"
-import type { Linter } from "eslint"
+import { antfu } from "@antfu/eslint-config"
+import vuePug from "eslint-plugin-vue-pug"
 
 // TODO: add more options / proxy antfu options as needed.
 export interface EslintOptions {
@@ -82,20 +82,18 @@ export function defineEslintConfig(opts?: EslintOptions): FlatConfigComposer {
     })
 
     if (fullOpts.vuePug) {
-      composer.append(interopDefault(import("eslint-plugin-vue-pug")).then(vuePug => ({
-        // vue-pug doesn't support eslint flat config
-        // The following code is cherry-picked from eslint-plugin-vue-pug/lib/configs/base.js
-        // See: https://github.com/rashfael/eslint-plugin-vue-pug/issues/28
-        name: "vue-pug",
-        files: ["**/*.vue"],
-        languageOptions: {
-          parserOptions: {
-            templateTokenizer: { pug: "vue-eslint-parser-template-tokenizer-pug" },
-          },
-        },
+      composer.override("antfu/vue/setup", {
         plugins: {
           "vue-pug": vuePug,
         },
+      })
+      composer.override("antfu/vue/rules", (t) => {
+        t.languageOptions!.parserOptions!.templateTokenizer = {
+          pug: "vue-eslint-parser-template-tokenizer-pug",
+        }
+        return t
+      })
+      composer.override("antfu/vue/rules", {
         rules: {
           // base
           "vue/component-name-in-template-casing": "off",
@@ -109,7 +107,7 @@ export function defineEslintConfig(opts?: EslintOptions): FlatConfigComposer {
           // vue3-strongly-recommended
           "vue-pug/no-pug-control-flow": "warn",
         },
-      } satisfies Linter.Config)))
+      })
     }
   }
 
