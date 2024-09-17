@@ -95,16 +95,19 @@ export function defineEslintConfig(opts?: EslintOptions): FlatConfigComposer {
       })
       composer.override("antfu/vue/rules", {
         rules: {
-          // base
-          "vue/component-name-in-template-casing": "off",
+          // This is combined from eslint-plugin-vue-pug/lib/configs/*.js
+          //
+          // Note: vue-pug/component-name-in-template-casing crashes in ESLint 9.
+          // We try to reuse vue/component-name-in-template-casing instead, which seems to be working.
+          //
+          // If this happens to be an issue in the future, we will need to
+          // reimplement vue-pug/component-name-in-template-casing for ESLint 9.
           "vue/html-self-closing": "off",
           "vue/html-end-tags": "off",
           "vue/html-indent": "off",
           "vue/multiline-html-element-content-newline": "off",
           "vue/singleline-html-element-content-newline": "off",
-          // vue3-essential
           "vue-pug/no-parsing-error": "error",
-          // vue3-strongly-recommended
           "vue-pug/no-pug-control-flow": "warn",
         },
       })
