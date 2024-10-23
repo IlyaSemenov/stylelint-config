@@ -2,15 +2,22 @@ import type { Config } from "stylelint"
 
 import { esmCjsCompatRequire } from "./utils"
 
-// TODO: add options as needed.
-export function defineStylelintConfig(): Config {
+export function defineStylelintConfig(config: Config = {}): Config {
+  const {
+    extends: configExtends,
+    rules,
+    ...stylelintConfig
+  } = config
+
   return {
+    ...stylelintConfig,
     extends: [
       // Use dynamic require, because these plugins are dependencies of lint-config and not user package.
       // With pnpm, they will not be available in userland, and VS Code Stylelint plugin will break.
       esmCjsCompatRequire.resolve("stylelint-config-standard-scss"),
       esmCjsCompatRequire.resolve("stylelint-config-standard-vue/scss"),
       esmCjsCompatRequire.resolve("@stylistic/stylelint-config"),
+      ...(configExtends ?? []),
     ],
     rules: {
       // don't add empty line before @include
@@ -31,6 +38,7 @@ export function defineStylelintConfig(): Config {
       "scss/load-no-partial-leading-underscore": null,
       // allow non-kebab-case class names such as _modifier
       "selector-class-pattern": null,
+      ...rules,
     },
   }
 }

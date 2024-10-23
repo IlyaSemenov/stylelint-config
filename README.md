@@ -45,6 +45,14 @@ import { defineStylelintConfig } from "@ilyasemenov/lint-config"
 export default defineStylelintConfig()
 ```
 
+Available options:
+
+```js
+export default defineStylelintConfig({
+  // ...all stylelint options.
+})
+```
+
 ## Add command line script
 
 Add to `package.json`:
