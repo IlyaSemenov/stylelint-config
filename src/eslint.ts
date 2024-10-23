@@ -1,9 +1,22 @@
 import { antfu } from "@antfu/eslint-config"
 import vuePug from "eslint-plugin-vue-pug"
 
-// TODO: add more options / proxy antfu options as needed.
-export interface EslintOptions {
+type AntfuEslintOptions = Exclude<Parameters<typeof antfu>[0], undefined>
+
+export interface EslintOptions extends AntfuEslintOptions {
+  /**
+   * Enable Vue support.
+   *
+   * @default false (unlike antfu, which defaults to auto-detect).
+   */
   vue?: boolean
+  /**
+   * Enable Vue pug rules.
+   *
+   * Must be used with care, as it disables many built-in Vue rules.
+   *
+   * @default false
+   */
   vuePug?: boolean
 }
 
@@ -13,22 +26,28 @@ export interface EslintOptions {
 export type FlatConfigComposer = ReturnType<typeof antfu>
 
 // TODO: add antfu-style ...args chaining as needed.
-export function defineEslintConfig(opts?: EslintOptions): FlatConfigComposer {
-  const options = {
-    vue: false,
-    vuePug: false,
-    ...opts,
-  }
+export function defineEslintConfig(options: EslintOptions = {}): FlatConfigComposer {
+  const {
+    vue: enableVue = false,
+    vuePug: enableVuePug = false,
+    stylistic: stylisticOptions,
+    rules,
+    ...antfuOptions
+  } = options
 
-  if (!options.vue && options.vuePug) {
+  if (!enableVue && enableVuePug) {
     throw new Error(`"vuePug" option requires "vue" option to be enabled.`)
   }
 
   const composer = antfu({
-    vue: options.vue,
-    stylistic: {
-      quotes: "double",
-    },
+    ...antfuOptions,
+    vue: enableVue,
+    stylistic: stylisticOptions === false
+      ? false
+      : {
+          quotes: "double",
+          ...(typeof stylisticOptions !== "boolean" ? stylisticOptions : undefined),
+        },
     rules: {
       // always add if { ... } braces
       "curly": ["error", "all"],
@@ -73,10 +92,11 @@ export function defineEslintConfig(opts?: EslintOptions): FlatConfigComposer {
       "ts/consistent-type-definitions": "off",
       // allow interace method as arrow fn
       "ts/method-signature-style": "off",
+      ...rules,
     },
   })
 
-  if (options.vue) {
+  if (enableVue) {
     composer.override("antfu/vue/rules", {
       rules: {
         // <component-name>
@@ -88,7 +108,7 @@ export function defineEslintConfig(opts?: EslintOptions): FlatConfigComposer {
       },
     })
 
-    if (options.vuePug) {
+    if (enableVuePug) {
       composer.override("antfu/vue/setup", {
         plugins: {
           "vue-pug": vuePug,

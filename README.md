@@ -27,8 +27,11 @@ Available options:
 export default defineEslintConfig({
   // Lint Vue. Unlike antfu, must be enabled explicitly.
   vue: true,
+
   // Lint pug in Vue templates.
   vuePug: true,
+
+  // ...and all @antfu/eslint-config options.
 })
 ```
 
