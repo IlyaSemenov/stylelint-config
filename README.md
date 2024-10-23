@@ -8,7 +8,7 @@ A set of reusable linter configs that I use in the projects that I develop or su
 ## Install
 
 ```sh
-pnpm add -D @ilyasemenov/lint-config
+pnpm add -D @ilyasemenov/lint-config eslint stylelint
 ```
 
 ## Setup eslint
@@ -40,6 +40,24 @@ Create `stylelint.config.js`:
 import { defineStylelintConfig } from "@ilyasemenov/lint-config"
 
 export default defineStylelintConfig()
+```
+
+## Add command line script
+
+Add to `package.json`:
+
+```json
+{
+  "scripts": {
+    "lint": "eslint --fix . && stylelint --fix '**/*.{css,scss,vue}'"
+  }
+}
+```
+
+and run:
+
+```sh
+pnpm lint
 ```
 
 ## Setup lint-staged
