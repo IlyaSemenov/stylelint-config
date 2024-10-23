@@ -51,6 +51,8 @@ export function defineEslintConfig(options: EslintOptions = {}): FlatConfigCompo
     rules: {
       // always add if { ... } braces
       "curly": ["error", "all"],
+      // allow const functions
+      "antfu/top-level-function": "off",
       // allow console.log
       "no-console": "warn",
       // allow arrays [, a]
