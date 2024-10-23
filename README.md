@@ -49,7 +49,13 @@ Available options:
 
 ```js
 export default defineStylelintConfig({
-  // ...all stylelint options.
+  // Use tabs for indentation.
+  tabs: true,
+
+  // Use single quotes.
+  quotes: "single",
+
+  // ...and all stylelint options.
 })
 ```
 

@@ -2,8 +2,25 @@ import type { Config } from "stylelint"
 
 import { esmCjsCompatRequire } from "./utils"
 
-export function defineStylelintConfig(config: Config = {}): Config {
+export interface StylelintOptions extends Config {
+  /**
+   * Use tabs for indentation.
+   *
+   * @default false
+   */
+  tabs?: boolean
+  /**
+   * Use single or double quotes.
+   *
+   * @default undefined (use Stylelint default)
+   */
+  quotes?: "single" | "double"
+}
+
+export function defineStylelintConfig(config: StylelintOptions = {}): Config {
   const {
+    tabs = false,
+    quotes,
     extends: configExtends,
     rules,
     ...stylelintConfig
@@ -38,6 +55,16 @@ export function defineStylelintConfig(config: Config = {}): Config {
       "scss/load-no-partial-leading-underscore": null,
       // allow non-kebab-case class names such as _modifier
       "selector-class-pattern": null,
+      ...tabs
+        ? {
+            "@stylistic/indentation": "tab",
+          }
+        : undefined,
+      ...quotes
+        ? {
+            "@stylistic/string-quotes": quotes,
+          }
+        : undefined,
       ...rules,
     },
   }
