@@ -48,8 +48,15 @@ export function defineEslintConfig(opts?: EslintOptions): FlatConfigComposer {
           "unknown",
         ],
         newlinesBetween: "always",
-        // For Nuxt.
-        internalPattern: ["~/**", "@/**", "#**"],
+        internalPattern: [
+          "@/**",
+          "~/**",
+          "#/**",
+          "~*",
+          "~*/**",
+          "#*",
+          "#*/**",
+        ],
         order: "asc",
         type: "natural",
       }],
