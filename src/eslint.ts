@@ -14,18 +14,18 @@ export type FlatConfigComposer = ReturnType<typeof antfu>
 
 // TODO: add antfu-style ...args chaining as needed.
 export function defineEslintConfig(opts?: EslintOptions): FlatConfigComposer {
-  const fullOpts = {
+  const options = {
     vue: false,
     vuePug: false,
     ...opts,
   }
 
-  if (!fullOpts.vue && fullOpts.vuePug) {
+  if (!options.vue && options.vuePug) {
     throw new Error(`"vuePug" option requires "vue" option to be enabled.`)
   }
 
   const composer = antfu({
-    vue: fullOpts.vue,
+    vue: options.vue,
     stylistic: {
       quotes: "double",
     },
@@ -69,7 +69,7 @@ export function defineEslintConfig(opts?: EslintOptions): FlatConfigComposer {
     },
   })
 
-  if (fullOpts.vue) {
+  if (options.vue) {
     composer.override("antfu/vue/rules", {
       rules: {
         // <component-name>
@@ -81,7 +81,7 @@ export function defineEslintConfig(opts?: EslintOptions): FlatConfigComposer {
       },
     })
 
-    if (fullOpts.vuePug) {
+    if (options.vuePug) {
       composer.override("antfu/vue/setup", {
         plugins: {
           "vue-pug": vuePug,
