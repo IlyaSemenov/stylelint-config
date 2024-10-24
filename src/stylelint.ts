@@ -41,6 +41,8 @@ export function defineStylelintConfig(config: StylelintOptions = {}): Config {
       "@stylistic/declaration-block-trailing-semicolon": ["always", { ignore: "single-declaration" }],
       // allow clip-path: polygon(<multiline code>)
       "@stylistic/declaration-colon-newline-after": null,
+      // don't limit line length
+      "@stylistic/max-line-length": null,
       // don't add empty line before @include
       "at-rule-empty-line-before": null,
       // allow #0033ff
@@ -63,6 +65,8 @@ export function defineStylelintConfig(config: StylelintOptions = {}): Config {
       "scss/load-no-partial-leading-underscore": null,
       // allow non-kebab-case class names such as _modifier
       "selector-class-pattern": null,
+      // allow external #weirdId
+      "selector-id-pattern": null,
       ...tabs
         ? {
             "@stylistic/indentation": "tab",

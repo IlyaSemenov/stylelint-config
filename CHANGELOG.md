@@ -4,7 +4,8 @@
 
 ### Patch Changes
 
-- 35bb116:
+- 35bb116: Lax stylelint rules:
+
   - Allow `style="color: red"`
   - Allow `clip-path: polygon(<multiline code>)`
   - Don't convert `#0033ff` to `#03f`
