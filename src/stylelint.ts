@@ -37,10 +37,18 @@ export function defineStylelintConfig(config: StylelintOptions = {}): Config {
       ...(configExtends ?? []),
     ],
     rules: {
+      // allow style="color: red"
+      "@stylistic/declaration-block-trailing-semicolon": ["always", { ignore: "single-declaration" }],
+      // allow clip-path: polygon(<multiline code>)
+      "@stylistic/declaration-colon-newline-after": null,
       // don't add empty line before @include
       "at-rule-empty-line-before": null,
+      // allow #0033ff
+      "color-hex-length": null,
       // allow non-kebab-case --vars
       "custom-property-pattern": null,
+      // allow findInvertColor
+      "function-name-case": null,
       // allow @include followed by class, TODO: improve
       "declaration-empty-line-before": null,
       // allow @import in the middle of SCSS, TODO: improve
