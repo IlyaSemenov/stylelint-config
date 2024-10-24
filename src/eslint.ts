@@ -96,6 +96,12 @@ export function defineEslintConfig(options: EslintOptions = {}): FlatConfigCompo
       "ts/method-signature-style": "off",
       ...rules,
     },
+  }, {
+    // Keep default package.json formatting.
+    files: ["**/package.json"],
+    rules: {
+      "jsonc/indent": ["error", 2],
+    },
   })
 
   if (enableVue) {
