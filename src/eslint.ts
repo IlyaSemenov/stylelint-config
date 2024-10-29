@@ -113,6 +113,8 @@ export function defineEslintConfig(options: EslintOptions = {}): FlatConfigCompo
         }],
         // allow v-for without :key
         "vue/require-v-for-key": "off",
+        // allow string + string
+        "vue/prefer-template": "off",
       },
     })
 
