@@ -29,10 +29,7 @@
     "lint": "eslint --fix .",
     "prepare": "husky",
     "prepublishOnly": "pnpm build",
-    "test": "vitest run",
-    "change": "beachball change",
-    "checkchange": "beachball check",
-    "release": "beachball publish"
+    "test": "vitest run"
   },
   "peerDependencies": {
     "eslint": "^9.5.0",
