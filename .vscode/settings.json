@@ -9,6 +9,9 @@
     "javascript",
     "typescript",
     "markdown",
+    "json",
+    "jsonc",
+    "yaml",
     "toml"
   ],
   "search.exclude": {

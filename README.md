@@ -1,30 +1,28 @@
-# @ilyasemenov/lint-config
+This is a set of reusable linter configs that I use in the projects that I develop or supervise:
 
-A set of reusable linter configs that I use in the projects that I develop or supervise:
+- For `eslint`, extends [@antfu/eslint-config](https://github.com/antfu/eslint-config).
+- For `stylelint`.
 
-- for `eslint`, extends [@antfu/eslint-config](https://github.com/antfu/eslint-config).
-- for `stylelint`
+## Setup ESLint
 
-## Install
+Install:
 
 ```sh
-pnpm add -D @ilyasemenov/lint-config eslint stylelint
+pnpm add -D eslint @ilyasemenov/eslint-config
 ```
-
-## Setup eslint
 
 Create `eslint.config.js`:
 
 ```js
-import { defineEslintConfig } from "@ilyasemenov/lint-config"
+import { defineConfig } from "@ilyasemenov/eslint-config"
 
-export default defineEslintConfig()
+export default defineConfig()
 ```
 
 Available options:
 
 ```js
-export default defineEslintConfig({
+export default defineConfig({
   // Lint Vue. Unlike antfu, must be enabled explicitly.
   vue: true,
 
@@ -35,20 +33,26 @@ export default defineEslintConfig({
 })
 ```
 
-## Setup stylelint
+## Setup Stylelint
+
+Install:
+
+```sh
+pnpm add -D stylelint @ilyasemenov/stylelint-config
+```
 
 Create `stylelint.config.js`:
 
 ```js
-import { defineStylelintConfig } from "@ilyasemenov/lint-config"
+import { defineConfig } from "@ilyasemenov/stylelint-config"
 
-export default defineStylelintConfig()
+export default defineConfig()
 ```
 
 Available options:
 
 ```js
-export default defineStylelintConfig({
+export default defineConfig({
   // Use tabs for indentation.
   tabs: true,
 
@@ -59,7 +63,7 @@ export default defineStylelintConfig({
 })
 ```
 
-## Add command line script
+## Command line script
 
 Add to `package.json`:
 

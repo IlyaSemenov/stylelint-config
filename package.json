@@ -1,58 +1,19 @@
 {
-  "name": "@ilyasemenov/lint-config",
   "type": "module",
-  "version": "1.2.4",
+  "private": true,
   "packageManager": "pnpm@9.8.0",
-  "description": "",
   "author": "Ilya Semenov",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/IlyaSemenov/lint-config"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "main": "dist/index.cjs",
-  "types": "dist/index.d.ts",
-  "files": [
-    "!src/**/*.test.*",
-    "dist",
-    "src"
-  ],
   "scripts": {
-    "build": "tsup",
     "lint": "eslint --fix .",
-    "prepare": "husky",
-    "prepublishOnly": "pnpm build",
-    "test": "vitest run"
-  },
-  "peerDependencies": {
-    "eslint": "^9.5.0",
-    "stylelint": "^16.9.0"
-  },
-  "dependencies": {
-    "@antfu/eslint-config": "^3.3.2",
-    "@stylistic/stylelint-config": "^2.0.0",
-    "eslint-plugin-vue-pug": "^0.6.2",
-    "stylelint-config-standard-scss": "^13.1.0",
-    "stylelint-config-standard-vue": "^1.0.0"
+    "prepare": "husky"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.8",
-    "@types/node": "^22.5.4",
-    "eslint": "^9.10.0",
-    "husky": "^9.1.5",
+    "@changesets/cli": "^2.27.10",
+    "@ilyasemenov/eslint-config": "workspace:*",
+    "eslint": "^9.15.0",
+    "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
-    "stylelint": "^16.9.0",
-    "tsconfig-vite-node": "^1.1.2",
-    "tsup": "^8.2.4",
-    "typescript": "^5.5.4",
-    "vite-tsconfig-paths": "^5.0.1",
-    "vitest": "^2.0.5"
+    "typescript": "^5.6.3"
   }
 }

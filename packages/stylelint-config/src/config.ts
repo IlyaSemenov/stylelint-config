@@ -17,7 +17,7 @@ export interface StylelintOptions extends Config {
   quotes?: "single" | "double"
 }
 
-export function defineStylelintConfig(config: StylelintOptions = {}): Config {
+export function defineConfig(config: StylelintOptions = {}): Config {
   const {
     tabs = false,
     quotes,

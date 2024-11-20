@@ -1,0 +1,43 @@
+{
+  "name": "@ilyasemenov/eslint-config",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "Opinionated ESLint config on top of @antfu/eslint-config",
+  "author": "Ilya Semenov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IlyaSemenov/lint-config"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "!src/**/*.test.*",
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "pnpm build",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "eslint": "^9.5.0"
+  },
+  "dependencies": {
+    "@antfu/eslint-config": "^3.9.2",
+    "eslint-plugin-vue-pug": "^0.6.2"
+  },
+  "devDependencies": {
+    "tsconfig-vite-node": "^1.1.2",
+    "tsup": "^8.3.5",
+    "vitest": "^2.1.5"
+  }
+}

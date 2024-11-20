@@ -21,12 +21,12 @@ export interface EslintOptions extends AntfuEslintOptions {
 }
 
 // Workaround for error TS2742:
-// The inferred type of 'defineEslintConfig' cannot be named without a reference to '.pnpm/eslint-flat-config-utils@0.3.1/node_modules/eslint-flat-config-utils'.
+// The inferred type of 'defineConfig' cannot be named without a reference to '.pnpm/eslint-flat-config-utils@0.3.1/node_modules/eslint-flat-config-utils'.
 // This is likely not portable. A type annotation is necessary.
 export type FlatConfigComposer = ReturnType<typeof antfu>
 
 // TODO: add antfu-style ...args chaining as needed.
-export function defineEslintConfig(options: EslintOptions = {}): FlatConfigComposer {
+export function defineConfig(options: EslintOptions = {}): FlatConfigComposer {
   const {
     vue: enableVue = false,
     vuePug: enableVuePug = false,

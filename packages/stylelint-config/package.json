@@ -1,0 +1,44 @@
+{
+  "name": "@ilyasemenov/stylelint-config",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "Opinionated Stylelint config",
+  "author": "Ilya Semenov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IlyaSemenov/lint-config"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "!src/**/*.test.*",
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "pnpm build",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "stylelint": "^16.9.0"
+  },
+  "dependencies": {
+    "@stylistic/stylelint-config": "^2.0.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-config-standard-vue": "^1.0.0"
+  },
+  "devDependencies": {
+    "tsconfig-vite-node": "^1.1.2",
+    "tsup": "^8.3.5",
+    "vitest": "^2.1.5"
+  }
+}
