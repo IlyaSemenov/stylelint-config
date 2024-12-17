@@ -17,6 +17,8 @@ pnpm add -D eslint @ilyasemenov/eslint-config
 Create `eslint.config.js`:
 
 ```js
+// @ts-check
+
 import { defineConfig } from "@ilyasemenov/eslint-config"
 
 export default defineConfig()

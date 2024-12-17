@@ -15,6 +15,8 @@ pnpm add -D stylelint @ilyasemenov/stylelint-config
 Create `stylelint.config.js`:
 
 ```js
+// @ts-check
+
 import { defineConfig } from "@ilyasemenov/stylelint-config"
 
 export default defineConfig()
