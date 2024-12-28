@@ -109,10 +109,12 @@ export function defineConfig(options: EslintOptions = {}): FlatConfigComposer {
         "vue/component-name-in-template-casing": ["error", "kebab-case", {
           registeredComponentsOnly: false,
         }],
-        // allow v-for without :key
-        "vue/require-v-for-key": "off",
+        // disable empty <script> and <style> blocks
+        "vue/no-empty-component-block": "error",
         // allow string + string
         "vue/prefer-template": "off",
+        // allow v-for without :key
+        "vue/require-v-for-key": "off",
       },
     })
 
