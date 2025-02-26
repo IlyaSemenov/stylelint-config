@@ -1,4 +1,5 @@
 import { antfu } from "@antfu/eslint-config"
+import annotation from "eslint-plugin-annotation"
 import vuePug from "eslint-plugin-vue-pug"
 
 type AntfuEslintOptions = Exclude<Parameters<typeof antfu>[0], undefined>
@@ -99,6 +100,15 @@ export function defineConfig(options: EslintOptions = {}): FlatConfigComposer {
     files: ["**/package.json"],
     rules: {
       "jsonc/indent": ["error", 2],
+    },
+  }, {
+    plugins: { annotation },
+    // files: ["**/*"],
+    rules: {
+      "annotation/format-date": "error",
+      "annotation/sort-keys": "error",
+      "annotation/sort": "error",
+      "annotation/unique": "error",
     },
   })
 
