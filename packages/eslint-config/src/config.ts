@@ -129,32 +129,8 @@ export function defineConfig(options: EslintOptions = {}): FlatConfigComposer {
     })
 
     if (enableVuePug) {
-      composer.override("antfu/vue/setup", {
-        plugins: {
-          "vue-pug": vuePug,
-        },
-      })
-      composer.override("antfu/vue/rules", (t) => {
-        t.languageOptions!.parserOptions!.templateTokenizer = {
-          pug: "vue-eslint-parser-template-tokenizer-pug",
-        }
-        return t
-      })
-      composer.override("antfu/vue/rules", {
-        rules: {
-          // This is combined from eslint-plugin-vue-pug/lib/configs/*.js
-          // Disable built-in Vue rules because they either report false positives or break pug on autofix.
-          "vue/component-name-in-template-casing": "off",
-          "vue/html-self-closing": "off",
-          "vue/html-end-tags": "off",
-          "vue/html-indent": "off",
-          "vue/multiline-html-element-content-newline": "off",
-          "vue/singleline-html-element-content-newline": "off",
-          "vue-pug/no-parsing-error": "error",
-          "vue-pug/no-pug-control-flow": "warn",
-          // TODO: add vue-pug/component-name-in-template-casing (currently crashes).
-        },
-      })
+      composer.append(vuePug.configs["flat/recommended"])
+      // TODO: add vue-pug/component-name-in-template-casing (it was crashing in the past, need to test and see).
     }
   }
 
