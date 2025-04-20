@@ -38,6 +38,9 @@ importers:
       eslint-plugin-annotation:
         specifier: ^1.1.6
         version: 1.1.6(eslint@9.24.0(jiti@1.21.6))(typescript@5.8.3)
+      eslint-plugin-perfectionist:
+        specifier: ^4.11.0
+        version: 4.11.0(eslint@9.24.0(jiti@1.21.6))(typescript@5.8.3)
       eslint-plugin-vue-pug:
         specifier: ^1.0.0-alpha.2
         version: 1.0.0-alpha.2(eslint-plugin-vue@10.0.0(eslint@9.24.0(jiti@1.21.6))(vue-eslint-parser@10.1.3(eslint@9.24.0(jiti@1.21.6))))(vue-eslint-parser@10.1.3(eslint@9.24.0(jiti@1.21.6)))

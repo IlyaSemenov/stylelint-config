@@ -1,5 +1,6 @@
 import { antfu } from "@antfu/eslint-config"
 import annotation from "eslint-plugin-annotation"
+import { Alphabet } from "eslint-plugin-perfectionist/alphabet"
 import vuePug from "eslint-plugin-vue-pug"
 
 type AntfuEslintOptions = Exclude<Parameters<typeof antfu>[0], undefined>
@@ -25,6 +26,13 @@ export interface EslintOptions extends AntfuEslintOptions {
 // The inferred type of 'defineConfig' cannot be named without a reference to '.pnpm/eslint-flat-config-utils@0.3.1/node_modules/eslint-flat-config-utils'.
 // This is likely not portable. A type annotation is necessary.
 export type FlatConfigComposer = ReturnType<typeof antfu>
+
+// See https://github.com/azat-io/eslint-plugin-perfectionist/issues/518
+const alphabet = Alphabet
+  .generateRecommendedAlphabet()
+  .sortByNaturalSort()
+  .placeCharacterBefore({ characterBefore: "/", characterAfter: "-" })
+  .getCharacters()
 
 // TODO: add antfu-style ...args chaining as needed.
 export function defineConfig(options: EslintOptions = {}): FlatConfigComposer {
@@ -78,7 +86,8 @@ export function defineConfig(options: EslintOptions = {}): FlatConfigComposer {
           "^@/",
         ],
         order: "asc",
-        type: "natural",
+        type: "custom",
+        alphabet,
       }],
       "perfectionist/sort-named-imports": ["error", {
         ignoreAlias: true,
