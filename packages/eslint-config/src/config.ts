@@ -125,9 +125,7 @@ export function defineConfig(options: EslintOptions = {}): FlatConfigComposer {
     composer.override("antfu/vue/rules", {
       rules: {
         // <component-name>
-        "vue/component-name-in-template-casing": ["error", "kebab-case", {
-          registeredComponentsOnly: false,
-        }],
+        "vue/component-name-in-template-casing": ["error", "kebab-case", { registeredComponentsOnly: false }],
         // disable empty <script> and <style> blocks
         "vue/no-empty-component-block": "error",
         // allow string + string
@@ -139,7 +137,13 @@ export function defineConfig(options: EslintOptions = {}): FlatConfigComposer {
 
     if (enableVuePug) {
       composer.append(vuePug.configs["flat/recommended"])
-      // TODO: add vue-pug/component-name-in-template-casing (it was crashing in the past, need to test and see).
+      composer.append({
+        name: "ilyasemenov/vue/rules",
+        rules: {
+          // component-name
+          "vue-pug/component-name-in-template-casing": ["error", "kebab-case", { registeredComponentsOnly: false }],
+        },
+      })
     }
   }
 

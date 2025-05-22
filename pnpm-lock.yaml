@@ -42,8 +42,8 @@ importers:
         specifier: ^4.11.0
         version: 4.11.0(eslint@9.24.0(jiti@1.21.6))(typescript@5.8.3)
       eslint-plugin-vue-pug:
-        specifier: ^1.0.0-alpha.2
-        version: 1.0.0-alpha.2(eslint-plugin-vue@10.0.0(eslint@9.24.0(jiti@1.21.6))(vue-eslint-parser@10.1.3(eslint@9.24.0(jiti@1.21.6))))(vue-eslint-parser@10.1.3(eslint@9.24.0(jiti@1.21.6)))
+        specifier: ^1.0.0-alpha.3
+        version: 1.0.0-alpha.3(eslint-plugin-vue@10.0.0(eslint@9.24.0(jiti@1.21.6))(vue-eslint-parser@10.1.3(eslint@9.24.0(jiti@1.21.6))))(vue-eslint-parser@10.1.3(eslint@9.24.0(jiti@1.21.6)))
     devDependencies:
       tsconfig-vite-node:
         specifier: ^1.1.2
@@ -1587,10 +1587,10 @@ packages:
       '@typescript-eslint/eslint-plugin':
         optional: true
 
-  eslint-plugin-vue-pug@1.0.0-alpha.2:
-    resolution: {integrity: sha512-CyhEz5zdz5aU5u+NkhTENmDDPlGaF8mrG+QFEsF0gB3k4SC7CJ3EbAxeY2o9lljC6NXBcWhCJYgtDEYgkyWQwQ==}
+  eslint-plugin-vue-pug@1.0.0-alpha.3:
+    resolution: {integrity: sha512-PHHCfa/QM0YJgGxdsrO8lThsgrO6ZMq6AxpOIsZr5chWImFRMxC6K/773Jq0GumQljrSp3hGPW7E/upRiBP07w==}
     peerDependencies:
-      eslint-plugin-vue: 10.0.0
+      eslint-plugin-vue: ^10.0.0
 
   eslint-plugin-vue@10.0.0:
     resolution: {integrity: sha512-XKckedtajqwmaX6u1VnECmZ6xJt+YvlmMzBPZd+/sI3ub2lpYZyFnsyWo7c3nMOQKJQudeyk1lw/JxdgeKT64w==}
@@ -4699,7 +4699,7 @@ snapshots:
     optionalDependencies:
       '@typescript-eslint/eslint-plugin': 8.30.1(@typescript-eslint/parser@8.30.1(eslint@9.24.0(jiti@1.21.6))(typescript@5.8.3))(eslint@9.24.0(jiti@1.21.6))(typescript@5.8.3)
 
-  eslint-plugin-vue-pug@1.0.0-alpha.2(eslint-plugin-vue@10.0.0(eslint@9.24.0(jiti@1.21.6))(vue-eslint-parser@10.1.3(eslint@9.24.0(jiti@1.21.6))))(vue-eslint-parser@10.1.3(eslint@9.24.0(jiti@1.21.6))):
+  eslint-plugin-vue-pug@1.0.0-alpha.3(eslint-plugin-vue@10.0.0(eslint@9.24.0(jiti@1.21.6))(vue-eslint-parser@10.1.3(eslint@9.24.0(jiti@1.21.6))))(vue-eslint-parser@10.1.3(eslint@9.24.0(jiti@1.21.6))):
     dependencies:
       eslint-plugin-vue: 10.0.0(eslint@9.24.0(jiti@1.21.6))(vue-eslint-parser@10.1.3(eslint@9.24.0(jiti@1.21.6)))
       vue-eslint-parser-template-tokenizer-pug: 1.0.0(vue-eslint-parser@10.1.3(eslint@9.24.0(jiti@1.21.6)))
