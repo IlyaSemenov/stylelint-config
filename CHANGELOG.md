@@ -1,5 +1,11 @@
 # @ilyasemenov/stylelint-config
 
+## 2.1.0
+
+### Minor Changes
+
+- 4af0c08: Add `tailwind` option.
+
 ## 2.0.0
 
 ### Major Changes
