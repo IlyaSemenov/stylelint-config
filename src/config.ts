@@ -16,6 +16,12 @@ export interface StylelintOptions extends Config {
    */
   vue?: boolean
   /**
+   * Add Tailwind CSS rules.
+   *
+   * @default false
+   */
+  tailwind?: boolean
+  /**
    * Use tabs for indentation.
    *
    * @default false
@@ -33,6 +39,7 @@ export function defineConfig(config: StylelintOptions = {}): Config {
   const {
     scss = false,
     vue = false,
+    tailwind = false,
     tabs = false,
     quotes,
     extends: configExtends,
@@ -51,6 +58,10 @@ export function defineConfig(config: StylelintOptions = {}): Config {
       ? scss
         ? [esmCjsCompatRequire.resolve("stylelint-config-standard-vue/scss")]
         : [esmCjsCompatRequire.resolve("stylelint-config-standard-vue")]
+      : []
+    ),
+    ...(tailwind
+      ? [esmCjsCompatRequire.resolve("stylelint-config-tailwindcss")]
       : []
     ),
     esmCjsCompatRequire.resolve("@stylistic/stylelint-config"),

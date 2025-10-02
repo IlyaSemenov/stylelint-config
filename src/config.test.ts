@@ -36,6 +36,15 @@ test("scss, vue", () => {
   ])
 })
 
+test("tailwind", () => {
+  const config = defineConfig({ tailwind: true })
+  expect(config.extends).toEqual([
+    expect.stringContaining("stylelint-config-standard"),
+    expect.stringContaining("stylelint-config-tailwindcss"),
+    expect.stringContaining("@stylistic/stylelint-config"),
+  ])
+})
+
 it("does not include SCSS rules when scss: false", () => {
   const config = defineConfig({ scss: false })
   expect(config.rules).not.toHaveProperty("scss/at-mixin-pattern")

@@ -32,6 +32,9 @@ export default defineConfig({
   // Add Vue rules (either CSS or SCSS).
   vue: true,
 
+  // Add Tailwind CSS rules.
+  tailwind: true,
+
   // Use tabs for indentation.
   tabs: true,
 
