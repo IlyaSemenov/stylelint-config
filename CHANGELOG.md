@@ -1,5 +1,15 @@
 # @ilyasemenov/stylelint-config
 
+## 2.0.0
+
+### Major Changes
+
+- 5f25381: Opt-in for SCSS and Vue. Use plain CSS rules by default. Use `defineConfig({ vue: true, scss: true })` to restore the old behaviour.
+
+### Minor Changes
+
+- 7781b94: Update upstream deps (`@stylistic/stylelint-config`, `stylelint-config-standard-scss`).
+
 ## 1.1.0
 
 ### Minor Changes
