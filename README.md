@@ -26,6 +26,12 @@ Available options:
 
 ```js
 export default defineConfig({
+  // Add SCSS rules.
+  scss: true,
+
+  // Add Vue rules (either CSS or SCSS).
+  vue: true,
+
   // Use tabs for indentation.
   tabs: true,
 
